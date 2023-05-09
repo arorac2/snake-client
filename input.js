@@ -17,6 +17,7 @@
 // connect.write("Hello server!");
 
 // Handle user input from keyboard
+// Handle user input from keyboard
 const handleUserInput = function (key) {
   if (key === "w") {
     connect.write("Move: up");
@@ -30,6 +31,15 @@ const handleUserInput = function (key) {
   } else if (key === "d") {
     connect.write("Move: right");
     console.log("Moved right");
+  } else if (key === "1") {
+    connect.write("Say: Hi there!");
+    console.log("Sent 'Hi there!'");
+  } else if (key === "2") {
+    connect.write("Say: whats up?");
+    console.log("Sent 'whats up?'");
+  } else if (key === "3") {
+    connect.write("Say: Nice game!");
+    console.log("Sent 'Nice game!'");
   } else if (key === "\u0003") {
     process.exit();
   }
@@ -40,8 +50,13 @@ let connection;
 
 const setupInput = (conn) => {
   connection = conn;
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+  stdin.on("data", (key) => {
+    handleUserInput(key);
+  });
 };
-// console.log("Connecting to server...");
-// setupInput();
 
-module.exports = {setupInput};
+module.exports = { setupInput };
