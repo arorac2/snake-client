@@ -20,12 +20,16 @@
 const handleUserInput = function (key) {
   if (key === "w") {
     connect.write("Move: up");
+    console.log("Moved up");
   } else if (key === "a") {
     connect.write("Move: left");
+    console.log("Moved left");
   } else if (key === "s") {
     connect.write("Move: down");
+    console.log("Moved down");
   } else if (key === "d") {
     connect.write("Move: right");
+    console.log("Moved right");
   } else if (key === "\u0003") {
     process.exit();
   }
