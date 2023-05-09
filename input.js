@@ -36,15 +36,11 @@ const handleUserInput = function (key) {
 };
 
 // Set up input from keyboard
-const setupInput = function () {
-  const stdin = process.stdin;
-  stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
-  stdin.resume();
-  stdin.on("data", handleUserInput);
-  return stdin;
-};
+let connection;
 
+const setupInput = (conn) => {
+  connection = conn;
+};
 // console.log("Connecting to server...");
 // setupInput();
 
